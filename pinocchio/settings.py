@@ -26,7 +26,7 @@ SECRET_KEY = '$&^#$7cq*%k=8+i%=e2$@l5vw$bdiy$1l%fuk(pi2o++mddcbu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['pinocchio-pizzeria.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['pizzeria-pinocchio.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -109,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'ru-ru'
+LANGUAGE_CODE = 'ru-RU'
 
 TIME_ZONE = 'Europe/Moscow'
 
