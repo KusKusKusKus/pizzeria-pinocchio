@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success" role="alert" style="text-align:center">
+                <h3>{{ message }}</h3>
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% if orders %}
+        {% for item in orders %}
+            <h2>{{ item }}
+                {% if item.order_done == True %}
+                    <i class="fa fa-check"></i>
+                    <small> <---- Этот заказ готов!</small>
+                    <div><a href="{% url "payment" %}" class="button17" tabindex="0">Оплатить</a></div>
+                    <!--<div><input type="button" name="" value="Оплатить" class="button17" tabindex="0"></div>-->
+                {% else %}
+                    <i class="fa fa-times"></i>
+                {% endif %}
+            </h2>
+
+            <h5>Сделан {{ item.order_timestamp |timesince }} назад</h5>
+            {% if item.order_done == False %}
+            {% endif %}
+
+            <ul>
+                {% for pizza_item in item.pizzas.all %}
+                    <li>{{ pizza_item}} -> {% for topping in pizza_item.toppings.all %}{{ topping }}, {% endfor %}</li>
+                {% endfor %}
+                {% for sub_item in item.subs.all %}
+                    <li>Дополнения: {{ sub_item.subtype }} {{ sub_item.subsize }}</li>
+                {% endfor %}
+                {% for pasta_item in item.pastas.all %}
+                    <li>Паста: {{ pasta_item.pastatype }}</li>
+                {% endfor %}
+                {% for salad_item in item.salads.all %}
+                    <li>Салат: {{ salad_item.saladtype }}</li>
+                {% endfor %}
+                {% for platter_item in item.platters.all %}
+                    <li>Блюдо: {{ platter_item.plattertype }} {{ platter_item.plattersize }}</li>
+                {% endfor %}
+            </ul>
+            <div>{{sub_item.subtype}}</div>
+        {% endfor %}
+    {% else %}
+        <h2> У вас нет НИКАКИХ заказов. Пора это изменить!</h2>
+    {% endif %}
+{% endblock %}
