@@ -25,7 +25,7 @@ SECRET_KEY = '$&^#$7cq*%k=8+i%=e2$@l5vw$bdiy$1l%fuk(pi2o++mddcbu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['pizzeria-pinocchio.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['pinocchio-pizzeria.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
