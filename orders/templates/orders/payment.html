@@ -1,10 +1,37 @@
 {% extends "layout.html" %}
-
+<head>
+  	<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Ensures optimal rendering on mobile devices. -->
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- Optimal Internet Explorer compatibility -->
+</head>
 {% block body %}
-    <div style="text-align:center">
-        <div align="center">
-            <script src="https://www.paypal.com/sdk/js?client-id=test"></script>
-            <script>paypal.Buttons().render('body');</script>
-        </div>
-    </div>
+	<script
+    	src="https://www.paypal.com/sdk/js?client-id=AWr8tG5oChUpGgIRCp3pnnSipVzZm4rAycC7L2q-yRYmdJCB05eQzXpZCCi5Q3XU99jeI01SAFshXHte&currency=RUB"> // Required. Replace YOUR_CLIENT_ID with your sandbox client ID.
+ 	</script>
+ 	<div id="paypal-button-container" ></div>
+	<script>
+    	paypal.Buttons().render('body');
+    // This function displays Smart Payment Buttons on your web page.
+  	</script>
+  	<script>
+  		paypal.Buttons({
+    		createOrder: function(data, actions) {
+      // This function sets up the details of the transaction, including the amount and line item details.
+      		return actions.order.create({
+        		purchase_units: [{
+          			amount: {
+           				value: '0.01'
+          			}
+        		}]
+      		});
+    	}
+    	onApprove: function(data, actions) {
+      		// This function captures the funds from the transaction.
+      		return actions.order.capture().then(function(details) {
+        		// This function shows a transaction success message to your buyer.
+        		alert('Transaction completed by ' + details.payer.name.given_name);
+      		});
+    	}
+  	}).render(request, 'orders/menu.html', context);
+</script>
+
 {% endblock %}
