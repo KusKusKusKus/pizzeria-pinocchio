@@ -163,6 +163,9 @@ def add_to_cart(request, item_type, item_id, item_bigger, add_cheese):
 
     return redirect(menu_view)
 
+@login_required
+def remove_of_cart(request, item_id):
+
 
 @login_required()
 def make_order(request):

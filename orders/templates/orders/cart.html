@@ -10,7 +10,6 @@
                 <tr>
                     <th scope="col">Название</th>
                     <th scope="col">Цена</th>
-                    <th scope="col">Редактирование</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -19,7 +18,6 @@
                         <tr>
                             <td>{{ item }}</td>
                             <td>{{ item.price }} RUB</td>
-                            <td></td>
                         </tr>
                     {% endfor %}
                 {% endif %}
@@ -78,10 +76,6 @@
                 <a href="{% url "clear_cart" %}"><input class="btn-outline-danger btn-sm" type="button" value="Удалить заказ">
                 </a>
             </div>
-
-
         </div>
-
-
     {% endif %}
 {% endblock %}
