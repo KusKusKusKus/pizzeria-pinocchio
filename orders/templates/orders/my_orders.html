@@ -14,7 +14,10 @@
                 {% if item.order_done == True %}
                     <i class="fa fa-check"></i>
                     <small> <---- Этот заказ готов!</small>
-                    <div><a href="{% url "payment" %}" class="button17" tabindex="0">Оплатить</a></div>
+                    <div>
+                        <script src="https://www.paypal.com/sdk/js?client-id=test"></script>
+                        <script>paypal.Buttons().render('body');</script>
+                    </div>
                     <!--<div><input type="button" name="" value="Оплатить" class="button17" tabindex="0"></div>-->
                 {% else %}
                     <i class="fa fa-times"></i>
