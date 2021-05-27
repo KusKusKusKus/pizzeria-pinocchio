@@ -47,7 +47,8 @@ class Pizza(models.Model):
             ("sm", "Маленькая"),
             ("lg", "Большая")
         ),
-    )    pizzatype = models.ForeignKey(PizzaType, on_delete=models.CASCADE, null=True)
+    )    
+    pizzatype = models.ForeignKey(PizzaType, on_delete=models.CASCADE, null=True)
 
     toppings = models.ManyToManyField(PizzaTopping, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2, default=0.00, editable=False)
